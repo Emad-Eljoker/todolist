@@ -1,6 +1,6 @@
 {
   "name": "todo-list",
-  "homepage": "./",
+  "homepage": "todoList",
   "author": "emad nagy",
   "version": "0.1.0",
   "private": true,
