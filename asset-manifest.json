@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.fd31bcf4.css",
-    "main.js": "/static/js/main.07db1806.js",
-    "static/js/453.eaf46b5d.chunk.js": "/static/js/453.eaf46b5d.chunk.js",
-    "static/media/Cairo-Bold.ttf": "/static/media/Cairo-Bold.ce0de3cc5a5937b53d2a.ttf",
-    "static/media/Cairo-Light.ttf": "/static/media/Cairo-Light.967656de5bc23b84d00d.ttf",
-    "index.html": "/index.html",
-    "main.fd31bcf4.css.map": "/static/css/main.fd31bcf4.css.map",
-    "main.07db1806.js.map": "/static/js/main.07db1806.js.map",
-    "453.eaf46b5d.chunk.js.map": "/static/js/453.eaf46b5d.chunk.js.map"
+    "main.css": "/todolist/static/css/main.5f94d34b.css",
+    "main.js": "/todolist/static/js/main.44f44ab3.js",
+    "static/js/453.eaf46b5d.chunk.js": "/todolist/static/js/453.eaf46b5d.chunk.js",
+    "static/media/Cairo-Bold.ttf": "/todolist/static/media/Cairo-Bold.ce0de3cc5a5937b53d2a.ttf",
+    "static/media/Cairo-Light.ttf": "/todolist/static/media/Cairo-Light.967656de5bc23b84d00d.ttf",
+    "index.html": "/todolist/index.html",
+    "main.5f94d34b.css.map": "/todolist/static/css/main.5f94d34b.css.map",
+    "main.44f44ab3.js.map": "/todolist/static/js/main.44f44ab3.js.map",
+    "453.eaf46b5d.chunk.js.map": "/todolist/static/js/453.eaf46b5d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fd31bcf4.css",
-    "static/js/main.07db1806.js"
+    "static/css/main.5f94d34b.css",
+    "static/js/main.44f44ab3.js"
   ]
 }
