@@ -71,14 +71,14 @@ export default function MyCard() {
     setTaskState(value);
   }
 // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    const Gettask = JSON.parse(localStorage.getItem("task"));
-    if (Gettask) {
-      setTask(Gettask);
-    } else {
+useEffect(() => {
+  const Gettask = JSON.parse(localStorage.getItem("task"));
+  if (Gettask) {
+    setTask(Gettask);
+  } else {
     localStorage.setItem("task", JSON.stringify(task)); 
-    }
-  }, []);
+  }
+}, []);
   return (
     <>
       <Dialog
