@@ -70,7 +70,7 @@ export default function MyCard() {
   function handelTaskState(value) {
     setTaskState(value);
   }
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const Gettask = JSON.parse(localStorage.getItem("task"));
     if (Gettask) {
@@ -78,7 +78,7 @@ export default function MyCard() {
     } else {
     localStorage.setItem("task", JSON.stringify(task)); 
     }
-  });
+  }, []);
   return (
     <>
       <Dialog
