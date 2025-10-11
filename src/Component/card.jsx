@@ -78,7 +78,7 @@ useEffect(() => {
   } else {
     localStorage.setItem("task", JSON.stringify(task)); 
   }
-}, []);
+},[]);
   return (
     <>
       <Dialog
