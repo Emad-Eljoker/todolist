@@ -74,7 +74,7 @@ export default function MyCard() {
     if (Gettask) {
       setTask(Gettask);
     } else {
-      setTask(task);
+    localStorage.setItem("task", JSON.stringify(task)); 
     }
   },[]);
   return (
