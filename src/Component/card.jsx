@@ -78,7 +78,7 @@ export default function MyCard() {
     } else {
     localStorage.setItem("task", JSON.stringify(task)); 
     }
-  },[]);
+  });
   return (
     <>
       <Dialog
