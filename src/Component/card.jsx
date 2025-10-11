@@ -15,17 +15,21 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 export default function MyCard() {
-  const [openDelete, setOpenDelete] = useState(false);
+  const [openDeleteAll, setOpenDeleteAll] = useState(false);
 
   const { task, setTask } = useContext(TaskContext);
   const [input, setInput] = useState("");
+
   const [TaskState, setTaskState] = useState("all");
 
-  let taskWillbeRender = task;
-  const Completed = task.filter((t) => t.isCompleted);
+  const Completed = task.filter((t) => {
+  
+    return t.isCompleted
+  });
 
   const notCompleted = task.filter((t) => !t.isCompleted);
 
+  let taskWillbeRender = task;
   if (TaskState === "completed") {
     taskWillbeRender = Completed;
   } else if (TaskState === "not-completed") {
@@ -36,12 +40,12 @@ export default function MyCard() {
 
   const taskList = taskWillbeRender.map((t) => <Mission key={t.id} t={t} />);
 
-  const handleOpenDelete = () => {
-    setOpenDelete(true);
+  const handleOpenDeleteAll = () => {
+    setOpenDeleteAll(true);
   };
 
-  const handleCloseDelete = () => {
-    setOpenDelete(false);
+  const handleCloseDeleteAll = () => {
+    setOpenDeleteAll(false);
   };
 
   function handelAddTask() {
@@ -72,12 +76,12 @@ export default function MyCard() {
     } else {
       setTask(task);
     }
-  });
+  },[]);
   return (
     <>
       <Dialog
-        open={openDelete}
-        onClose={handleCloseDelete}
+        open={openDeleteAll}
+        onClose={handleCloseDeleteAll}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         dir="rtl"
@@ -91,7 +95,7 @@ export default function MyCard() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button style={{ fontWeight: "bold" }} onClick={handleCloseDelete}>
+          <Button style={{ fontWeight: "bold" }} onClick={handleCloseDeleteAll}>
             اغلاق
           </Button>
           <Button
@@ -118,7 +122,9 @@ export default function MyCard() {
             مهامي
             <Divider />
           </Typography>
+
           <GroudBTN value={TaskState} handelTask={handelTaskState} />
+
           {taskList}
 
           <Addtask
@@ -126,22 +132,22 @@ export default function MyCard() {
             Inputvalue={input}
             handelInput={handelInput}
           />
-<div style={{background:"#ffff" ,  position: "sticky", bottom: "0px",}}>
-            <Button
-            onClick={handleOpenDelete}
-            color="error"
-            variant="contained"
-            sx={{
-              width: "80%",
-              height: "60px",
-              fontWeight: "bold",
-            
-            
-            }}
+          <div
+            style={{ background: "#ffff", position: "sticky", bottom: "0px" }}
           >
-            Delete All
-          </Button>
-</div>
+            <Button
+              onClick={handleOpenDeleteAll}
+              color="error"
+              variant="contained"
+              sx={{
+                width: "80%",
+                height: "60px",
+                fontWeight: "bold",
+              }}
+            >
+              Delete All
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </>
@@ -149,5 +155,6 @@ export default function MyCard() {
   function handleDeleteAll() {
     setTask([]);
     localStorage.setItem("task", JSON.stringify([]));
+     setOpenDeleteAll(false);
   }
 }
