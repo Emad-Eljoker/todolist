@@ -6,7 +6,7 @@ import Mission from "./mession";
 import GroudBTN from "./groudBTN";
 import Addtask from "./addTask";
 import { v4 as uuidv4 } from "uuid";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { TaskContext } from "./context/context";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -19,17 +19,25 @@ export default function MyCard() {
 
   const [openDeleteAll, setOpenDeleteAll] = useState(false);
 
-  const { task, setTask } = useContext(TaskContext);
+  const {task, setTask } = useContext(TaskContext);
   const [input, setInput] = useState("");
 
   const [TaskState, setTaskState] = useState("all");
 
-  const Completed = task.filter((t) => {
   
+  const Completed = useMemo(()=>{
+   return task.filter((t) => {
+  console.log("Completed Render")
     return t.isCompleted
   });
+  },[task])
 
-  const notCompleted = task.filter((t) => !t.isCompleted);
+  const notCompleted = useMemo(()=>{
+    return task.filter((t) => {
+  console.log("Not Completed Render")
+    return !t.isCompleted
+  });
+  },[task])
 
   let taskWillbeRender = task;
   if (TaskState === "completed") {
@@ -70,7 +78,7 @@ export default function MyCard() {
   function handelTaskState(value) {
     setTaskState(value);
   }
-// eslint-disable-next-line react-hooks/exhaustive-deps
+
 useEffect(() => {
   const Gettask = JSON.parse(localStorage.getItem("task"));
   if (Gettask) {
@@ -78,6 +86,7 @@ useEffect(() => {
   } else {
     localStorage.setItem("task", JSON.stringify(task)); 
   }
+  // eslint-disable-next-line
 },[]);
   return (
     <>
