@@ -5,92 +5,46 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
+// import Dialog from '@mui/material/Dialog';
+// import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from '@mui/material/DialogContent';
+
+// import DialogTitle from '@mui/material/DialogTitle';
+// import Button from '@mui/material/Button';
 // icons
 import CheckIcon from "@mui/icons-material/Check";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import { useState } from "react";
+// import { useState } from "react";
 import { useContext} from "react";
 import { TaskContext } from "./context/context";
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 
-export default function Mission({t}) {
-
-  const {task,setTask,handelCompelete} = useContext(TaskContext)
-  const [openDelete ,setOpenDelete] = useState(false)
-
-  const [openEdit ,setOpenEdit] = useState(false)
-
-const [EditInput,setEditInput] = useState({title:t.title , detailes:t.description})
+export default function Mission({t,openDelete,HopenEdit}) {
 
       const handleOpenDelete = () => {
-    setOpenDelete(true);
+ openDelete(t)
   };
 
-  const handleCloseDelete = () => {
-    setOpenDelete(false);
-  };
-  
-const handelDelete =() =>{
-const taskUpdate = task.filter(item=>item.id!==t.id)
-setTask(taskUpdate)
-localStorage.setItem("task",JSON.stringify(taskUpdate))
-}
+  const {handelCompelete} = useContext(TaskContext)
+
+
+
+
+
 
 
 
       const handleOpenEdit = () => {
-    setOpenEdit(true);
+   HopenEdit(t)
   };
 
-  const handleCloseEdit = () => {
-    setOpenEdit(false);
-  };
-  
-const handelEdit =() =>{
-const taskUpdate = task.map(item=>{
-  if(item.id === t.id){
-    return {...item , title:EditInput.title, description:EditInput.detailes }
-  }else return item 
-})
-setTask(taskUpdate)
-localStorage.setItem("task",JSON.stringify(taskUpdate))
-  setOpenEdit(false);
-}
+
 
   return (
     
 <>
-      <Dialog
-     
-        open={openDelete}
-        onClose={handleCloseDelete}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-    dir="rtl"
 
-     >
-        <DialogTitle     style={{fontWeight:"bold"}}   id="alert-dialog-title">
-        هل تريد حذف المهمه
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-         يرجي العلم انه سيتم حذف المهمة بشكل نهائي
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button style={{fontWeight:"bold"}}  onClick={handleCloseDelete}>اغلاق</Button>
-          <Button style={{fontWeight:"bold"}}  onClick={handelDelete} autoFocus>
-        موافق
-          </Button>
-        </DialogActions>
-      </Dialog>
     <Card
       className="taskCard"
       sx={{ bgcolor: "#50589C", marginBottom: "10px" }}
@@ -161,45 +115,7 @@ localStorage.setItem("task",JSON.stringify(taskUpdate))
         </Grid>
       </CardContent>
     </Card>
-     <Dialog
-     
-        open={openEdit}
-        onClose={handleCloseEdit}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-    dir="rtl"
-
-     >
-        <DialogTitle     style={{fontWeight:"bold"}}   id="alert-dialog-title">
-        هل تريد تعديل المهمه
-        </DialogTitle>
-        <DialogContent>
-       <TextField 
-       value={EditInput.title}
-       onChange={(e)=>{setEditInput({...EditInput,title:e.target.value})}}
-              autoFocus
-              margin="dense"
-              label="العنوان"
-              fullWidth
-              variant="standard"
-            />
-               <TextField 
-                value={EditInput.detailes}
-       onChange={(e)=>{setEditInput({...EditInput,detailes:e.target.value})}}
-              autoFocus
-              margin="dense"
-              label="التفاصيل"
-              fullWidth
-              variant="standard"
-            />
-        </DialogContent>
-        <DialogActions>
-          <Button style={{fontWeight:"bold"}}  onClick={handleCloseEdit}>اغلاق</Button>
-          <Button style={{fontWeight:"bold"}}  onClick={handelEdit} autoFocus>
-        موافق
-          </Button>
-        </DialogActions>
-      </Dialog>
+   
 </>
   );
 
