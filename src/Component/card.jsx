@@ -8,6 +8,7 @@ import Addtask from "./addTask";
 import { v4 as uuidv4 } from "uuid";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { TaskContext } from "./context/context";
+
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -15,7 +16,14 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from '@mui/material/TextField';
+
+
+import { ToastContext } from "./context/ToastContext";
+
 export default function MyCard() {
+
+    const {showHideToast} = useContext(ToastContext )
+
   const [Selectedtodo,SetSelectedTodo] =useState({});
   const [openDeleteAll, setOpenDeleteAll] = useState(false);
 
@@ -23,7 +31,7 @@ export default function MyCard() {
   const [input, setInput] = useState("");
 
   const [TaskState, setTaskState] = useState("all");
-  
+
 //Delete State 
   const [openDelete ,setOpenDelete] = useState(false)
 
@@ -82,6 +90,7 @@ export default function MyCard() {
     setTask(taskUpdate);
     localStorage.setItem("task", JSON.stringify(taskUpdate));
     setInput("");
+    showHideToast("تم اضافة المهمة بنجاح ")
   }
 
   function handelInput(value) {
@@ -101,6 +110,8 @@ export default function MyCard() {
   SetSelectedTodo(todo);
       setOpenDelete(true)
   }
+
+  
 //==Edit function 
 
 
@@ -123,6 +134,7 @@ const taskUpdate = task.map(item=>{
 setTask(taskUpdate)
 localStorage.setItem("task",JSON.stringify(taskUpdate))
   setOpenEdit(false);
+    showHideToast("تم التعديل بنجاح ")
 }
 //==
   
@@ -131,6 +143,7 @@ const taskUpdate = task.filter(item=>item.id!== Selectedtodo.id)
 setTask(taskUpdate)
 localStorage.setItem("task",JSON.stringify(taskUpdate))
     setOpenDelete(false)
+       showHideToast("تم الحذف بنجاح ") 
 }
 //==
 useEffect(() => {
