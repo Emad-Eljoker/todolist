@@ -54,6 +54,7 @@ export default function Mission({t,openDelete,HopenEdit}) {
         <Grid container spacing={2} alignItems="center" >
           <Grid size={6} sx={{ display: "flex" , gap: { xs: 1, sm: 2, md: 3 } }} >
             <IconButton
+            aria-label="احذف العنصر"
             onClick={handleOpenDelete}
               className="iconBtn"
               sx={{
@@ -68,6 +69,7 @@ export default function Mission({t,openDelete,HopenEdit}) {
             </IconButton>
 
             <IconButton
+             aria-label="عدل العنصر"
             onClick={handleOpenEdit}
               className="iconBtn"
               sx={{
@@ -82,6 +84,7 @@ export default function Mission({t,openDelete,HopenEdit}) {
             </IconButton>
 
             <IconButton
+              aria-label="اكمل المهمه"
               onClick={() => {
                 handelCompelete(t.id);
               }}
