@@ -5,8 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ## Available Scripts
-![Lighthouse Report Desktop](./images/Lighthouse%20Report%20Desktop.jpg)
-![Lighthouse Report Mobile](./images/Lighthouse%20Report%20Moblie.jpg)
+![Lighthouse Report Desktop](./Lighthouse%20Report%20Desktop.jpg)
+![Lighthouse Report Mobile](./Lighthouse%20Report%20Moblie.jpg)
 
 In the project directory, you can run:
 
