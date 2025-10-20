@@ -4,10 +4,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## Available Scripts
+## Lighthouse Report
 ![Lighthouse Report Desktop](./Lighthouse%20Report%20Desktop.jpg)
 ![Lighthouse Report Mobile](./Lighthouse%20Report%20Moblie.jpg)
 
+## Available Scripts
 In the project directory, you can run:
 
 ### `npm start`
