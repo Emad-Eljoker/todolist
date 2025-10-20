@@ -2,8 +2,9 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-![Lighthouse Report Desktop](./Lighthouse Report Desktop.jpg)
-![Lighthouse Report Mobile](./Lighthouse Report Moblie.jpg)
+![Lighthouse Report Desktop](./images/Lighthouse%20Report%20Desktop.jpg)
+![Lighthouse Report Mobile](./images/Lighthouse%20Report%20Moblie.jpg)
+
 
 ## Available Scripts
 
