@@ -5,20 +5,15 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
-// import Dialog from '@mui/material/Dialog';
-// import DialogActions from '@mui/material/DialogActions';
-// import DialogContent from '@mui/material/DialogContent';
 
-// import DialogTitle from '@mui/material/DialogTitle';
-// import Button from '@mui/material/Button';
-// icons
 import CheckIcon from "@mui/icons-material/Check";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-// import { useState } from "react";
+
 import { useContext} from "react";
 import { TaskContext } from "./context/context";
-// import TextField from '@mui/material/TextField';
+import { useToast} from "./context/ToastContext";
+
 
 export default function Mission({t,openDelete,HopenEdit}) {
 
@@ -26,11 +21,28 @@ export default function Mission({t,openDelete,HopenEdit}) {
  openDelete(t)
   };
 
-  const {handelCompelete} = useContext(TaskContext)
+  const {task,setTask} = useContext(TaskContext)
+const {showHideToast} =useToast()
 
 
+function handelCompelete (taskId){
+  const Comp = task.map(ta=>{
+    if(ta.id === taskId){
+      ta.isCompleted =!ta.isCompleted
+       
+    if(ta.isCompleted === true){
+       showHideToast(r => r = "تم اكمال المهمه") 
+    }else if(ta.isCompleted === false){
+       showHideToast(r => r = "تم  الغاء اكمال المهمه") 
+    }
+    }
+    return ta
+  
+  })
+  setTask(r =>r = Comp)
+    localStorage.setItem("task",JSON.stringify(Comp))
 
-
+  }
 
 
 

@@ -16,13 +16,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from '@mui/material/TextField';
+import { useToast } from "./context/ToastContext";
 
 
-import { ToastContext } from "./context/ToastContext";
 
 export default function MyCard() {
 
-    const {showHideToast} = useContext(ToastContext )
+  const {showHideToast} =useToast()
 
   const [Selectedtodo,SetSelectedTodo] =useState({});
   const [openDeleteAll, setOpenDeleteAll] = useState(false);
