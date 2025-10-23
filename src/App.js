@@ -41,11 +41,6 @@ function App() {
   const [task,setTask] = useState(initialTask)
 
 
-
-
-  
-
-
   
   return (
       <ThemeProvider theme={theme}>

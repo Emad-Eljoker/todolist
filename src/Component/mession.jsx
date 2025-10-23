@@ -16,15 +16,7 @@ import { useToast} from "./context/ToastContext";
 
 
 export default function Mission({t,openDelete,HopenEdit}) {
-
-      const handleOpenDelete = () => {
- openDelete(t)
-  };
-
-  const {task,setTask} = useContext(TaskContext)
-const {showHideToast} =useToast()
-
-
+  //================Completed===============
 function handelCompelete (taskId){
   const Comp = task.map(ta=>{
     if(ta.id === taskId){
@@ -43,9 +35,16 @@ function handelCompelete (taskId){
     localStorage.setItem("task",JSON.stringify(Comp))
 
   }
+  //================Open Delete==============
+      const handleOpenDelete = () => {
+ openDelete(t)
+  };
+
+  const {task,setTask} = useContext(TaskContext)
+const {showHideToast} =useToast()
 
 
-
+  //================Open Edit==============
 
       const handleOpenEdit = () => {
    HopenEdit(t)

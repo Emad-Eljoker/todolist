@@ -21,13 +21,14 @@ import { useToast } from "./context/ToastContext";
 
 
 export default function MyCard() {
-
+ const {task, setTask } = useContext(TaskContext);
+ 
   const {showHideToast} =useToast()
 
   const [Selectedtodo,SetSelectedTodo] =useState({});
   const [openDeleteAll, setOpenDeleteAll] = useState(false);
 
-  const {task, setTask } = useContext(TaskContext);
+ 
   const [input, setInput] = useState("");
 
   const [TaskState, setTaskState] = useState("all");
@@ -78,25 +79,12 @@ export default function MyCard() {
     setOpenDeleteAll(false);
   };
 //==Delete all
-//==Basic
-  function handelAddTask() {
-    let newtask = {
-      id: uuidv4(),
-      title: input,
-      description: "",
-      isCompleted: false,
-    };
-    const taskUpdate = [...task, newtask];
-    setTask(taskUpdate);
-    localStorage.setItem("task", JSON.stringify(taskUpdate));
-    setInput("");
-    showHideToast("تم اضافة المهمة بنجاح ")
-  }
 
+//==input
   function handelInput(value) {
     setInput(value);
   }
-
+//== All Completed  NotCompleted
   function handelTaskState(value) {
     setTaskState(value);
   }
@@ -110,12 +98,28 @@ export default function MyCard() {
   SetSelectedTodo(todo);
       setOpenDelete(true)
   }
-
+//==Basic Add
+  function handelAddTask() {
+    let newtask = {
+      id: uuidv4(),
+      title: input,
+      description: "",
+      isCompleted: false,
+    };
+    const taskUpdate = [...task, newtask];
+    setTask(taskUpdate);
+    localStorage.setItem("task", JSON.stringify(taskUpdate));
+    setInput("");
+    showHideToast("تم اضافة المهمة بنجاح ")
+  }
+  //==Delete All
+    function handleDeleteAll() {
+    setTask([]);
+    localStorage.setItem("task", JSON.stringify([]));
+     setOpenDeleteAll(false);
+  }
   
 //==Edit function 
-
-
-
       const handleOpenEdit = (todo) => {
         SetSelectedTodo(todo);
     setOpenEdit(true);
@@ -136,8 +140,7 @@ localStorage.setItem("task",JSON.stringify(taskUpdate))
   setOpenEdit(false);
     showHideToast("تم التعديل بنجاح ")
 }
-//==
-  
+//== Delete  
 const handelDelete =() =>{
 const taskUpdate = task.filter(item=>item.id!== Selectedtodo.id)
 setTask(taskUpdate)
@@ -300,10 +303,6 @@ useEffect(() => {
       </Card>
     </>
   );
-  function handleDeleteAll() {
-    setTask([]);
-    localStorage.setItem("task", JSON.stringify([]));
-     setOpenDeleteAll(false);
-  }
+
 }
 
