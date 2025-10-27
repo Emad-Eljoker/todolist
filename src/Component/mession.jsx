@@ -11,37 +11,31 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 import { useContext} from "react";
-import { TaskContext } from "./context/context";
+
 import { useToast} from "./context/ToastContext";
+import { TaskContext } from "./context/TaskContext";
 
 
 export default function Mission({t,openDelete,HopenEdit}) {
+     const { task,dispatch} = useContext(TaskContext);
+     const {showHideToast} =useToast()
   //================Completed===============
 function handelCompelete (taskId){
-  const Comp = task.map(ta=>{
-    if(ta.id === taskId){
-      ta.isCompleted =!ta.isCompleted
-       
-    if(ta.isCompleted === true){
-       showHideToast(r => r = "تم اكمال المهمه") 
-    }else if(ta.isCompleted === false){
-       showHideToast(r => r = "تم  الغاء اكمال المهمه") 
-    }
-    }
-    return ta
-  
-  })
-  setTask(r =>r = Comp)
-    localStorage.setItem("task",JSON.stringify(Comp))
-
+  const NewisCompleted = !t.isCompleted
+      if(NewisCompleted){
+         showHideToast(r => r = "مهمة مكتملة") 
+      }else if(NewisCompleted === false){
+         showHideToast(r => r = "مهمة غير مكتملة") 
+      }
+dispatch({type:"complete",payload:{id:taskId,task}})
   }
   //================Open Delete==============
       const handleOpenDelete = () => {
  openDelete(t)
   };
 
-  const {task,setTask} = useContext(TaskContext)
-const {showHideToast} =useToast()
+
+
 
 
   //================Open Edit==============
