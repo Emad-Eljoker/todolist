@@ -17,17 +17,17 @@ import { TaskContext } from "./context/TaskContext";
 
 
 export default function Mission({t,openDelete,HopenEdit}) {
-     const { task,dispatch} = useContext(TaskContext);
+     const {dispatch} = useContext(TaskContext);
      const {showHideToast} =useToast()
   //================Completed===============
 function handelCompelete (taskId){
   const NewisCompleted = !t.isCompleted
       if(NewisCompleted){
-         showHideToast(r => r = "مهمة مكتملة") 
+         showHideToast( r => r = "مهمة مكتملة") 
       }else if(NewisCompleted === false){
-         showHideToast(r => r = "مهمة غير مكتملة") 
+         showHideToast( r => r = "مهمة غير مكتملة") 
       }
-dispatch({type:"complete",payload:{id:taskId,task}})
+dispatch({type:"toggle",payload:{id:taskId}})
   }
   //================Open Delete==============
       const handleOpenDelete = () => {

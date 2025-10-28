@@ -1,7 +1,9 @@
+
 import { createContext } from "react";
  import { useReducer } from "react";
 import { taskReducer } from "../../Reducers/taskreducer";
 import { v4 as uuidv4 } from "uuid";
+
 const initialTask = [
   {
     id: uuidv4(),
@@ -30,7 +32,7 @@ export const TaskContext =createContext([])
  const [task, dispatch] = useReducer(taskReducer, initialTask)
     return (
     
-<TaskContext.Provider value={{task, dispatch,initialTask}}>
+<TaskContext.Provider value={{task, dispatch}}>
 {children}
 </TaskContext.Provider>
  

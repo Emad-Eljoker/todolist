@@ -60,11 +60,11 @@ case "get":{
       return payload
     }
 }
-case "complete":{
+case "toggle":{
     const Comp = currentTask.map(ta=>{
       if(ta.id === payload.id){
-        const NewTodo = { ...ta,isCompleted:!ta.isCompleted}
-       return NewTodo
+       
+       return { ...ta,isCompleted:!ta.isCompleted}
       }
      return ta
     
